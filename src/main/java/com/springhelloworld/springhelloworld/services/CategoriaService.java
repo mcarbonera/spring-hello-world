@@ -1,6 +1,7 @@
 package com.springhelloworld.springhelloworld.services;
 
 import com.springhelloworld.springhelloworld.domain.Categoria;
+import com.springhelloworld.springhelloworld.exceptions.ObjectNotFoundException;
 import com.springhelloworld.springhelloworld.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,9 @@ public class CategoriaService {
 
     public Categoria find(Integer id){
         Optional<Categoria> obj = categoriaRepository.findById(id);
-        return obj.orElse(null);
+        //return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
     }
 }
 
