@@ -1,6 +1,7 @@
 package com.springhelloworld.springhelloworld.services;
 
 import com.springhelloworld.springhelloworld.domain.Categoria;
+import com.springhelloworld.springhelloworld.dto.CategoriaDto;
 import com.springhelloworld.springhelloworld.exceptions.DataIntegrityException;
 import com.springhelloworld.springhelloworld.exceptions.ObjectNotFoundException;
 import com.springhelloworld.springhelloworld.repositories.CategoriaRepository;
@@ -53,6 +54,10 @@ public class CategoriaService {
     public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return categoriaRepository.findAll(pageRequest);
+    }
+
+    public Categoria fromDto(CategoriaDto objDto) {
+        return new Categoria(objDto.getId(),objDto.getNome());
     }
 }
 
