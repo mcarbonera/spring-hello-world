@@ -1,6 +1,7 @@
 package com.springhelloworld.springhelloworld.services;
 
 import com.springhelloworld.springhelloworld.domain.Categoria;
+import com.springhelloworld.springhelloworld.domain.Cliente;
 import com.springhelloworld.springhelloworld.dto.CategoriaDto;
 import com.springhelloworld.springhelloworld.exceptions.DataIntegrityException;
 import com.springhelloworld.springhelloworld.exceptions.ObjectNotFoundException;
@@ -34,8 +35,9 @@ public class CategoriaService {
     }
 
     public Categoria update(Categoria obj) {
-        find(obj.getId());
-        return categoriaRepository.save(obj);
+        Categoria newObj = find(obj.getId());
+        updateData(newObj, obj);
+        return categoriaRepository.save(newObj);
     }
 
     public void delete(Integer id) {
@@ -58,6 +60,10 @@ public class CategoriaService {
 
     public Categoria fromDto(CategoriaDto objDto) {
         return new Categoria(objDto.getId(),objDto.getNome());
+    }
+
+    private void updateData(Categoria newObj, Categoria obj) {
+        newObj.setNome(obj.getNome());
     }
 }
 
