@@ -1,13 +1,8 @@
 package com.springhelloworld.springhelloworld;
 
-import com.springhelloworld.springhelloworld.domain.Categoria;
-import com.springhelloworld.springhelloworld.domain.Cidade;
-import com.springhelloworld.springhelloworld.domain.Estado;
-import com.springhelloworld.springhelloworld.domain.Produto;
-import com.springhelloworld.springhelloworld.repositories.CategoriaRepository;
-import com.springhelloworld.springhelloworld.repositories.CidadeRepository;
-import com.springhelloworld.springhelloworld.repositories.EstadoRepository;
-import com.springhelloworld.springhelloworld.repositories.ProdutoRepository;
+import com.springhelloworld.springhelloworld.domain.*;
+import com.springhelloworld.springhelloworld.enums.TipoCliente;
+import com.springhelloworld.springhelloworld.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +20,10 @@ public class SpringHelloWorldApplication implements CommandLineRunner {
     EstadoRepository estadoRepository;
     @Autowired
     CidadeRepository cidadeRepository;
+    @Autowired
+    ClienteRepository clienteRepository;
+    @Autowired
+    EnderecoRepository enderecoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringHelloWorldApplication.class, args);
@@ -63,5 +62,17 @@ public class SpringHelloWorldApplication implements CommandLineRunner {
 
         estadoRepository.saveAll(Arrays.asList(est1,est2));
         cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
+
+        /* RELACIONAMENTO CLIENTE ENDERECO */
+        Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "1234567890986", TipoCliente.PESSOAFISICA);
+        cli1.getTelefones().addAll(Arrays.asList("1234564321","123455432"));
+
+        Endereco e1 = new Endereco(null,"Rua Flores", "300", "Apto 303", "Jardim", "345676434", cli1, c1);
+        Endereco e2 = new Endereco(null,"Avenida Matos", "105", "Sala 800", "Centro", "345765335", cli1, c2);
+
+        cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
+        clienteRepository.saveAll(Arrays.asList(cli1));
+        enderecoRepository.saveAll(Arrays.asList(e1,e2));
     }
 }
