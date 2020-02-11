@@ -99,7 +99,7 @@ public class SpringHelloWorldApplication implements CommandLineRunner {
         pedidoRepository.saveAll(Arrays.asList(ped1,ped2));
         pagamentoRepository.saveAll(Arrays.asList(pagto1,pagto2));
 
-        /* RELACIONAMENTO */
+        /* RELACIONAMENTO PRODUTO PEDIDO (ITEM_PEDIDO) */
         ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
         ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
         ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
