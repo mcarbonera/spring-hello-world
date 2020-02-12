@@ -1,11 +1,13 @@
 package com.springhelloworld.springhelloworld.dto;
 
 import com.springhelloworld.springhelloworld.domain.Cliente;
+import com.springhelloworld.springhelloworld.services.validation.ClienteUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+@ClienteUpdate
 public class ClienteDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
