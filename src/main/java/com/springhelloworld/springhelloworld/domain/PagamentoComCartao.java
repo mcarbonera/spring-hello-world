@@ -1,10 +1,12 @@
 package com.springhelloworld.springhelloworld.domain;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.springhelloworld.springhelloworld.enums.EstadoPagamento;
 
 import javax.persistence.Entity;
 
 @Entity
+@JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento {
     private Integer numeroDeParcelas;
 
