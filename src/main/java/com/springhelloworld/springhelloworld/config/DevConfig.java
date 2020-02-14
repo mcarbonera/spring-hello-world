@@ -1,6 +1,8 @@
 package com.springhelloworld.springhelloworld.config;
 
 import com.springhelloworld.springhelloworld.services.DBService;
+import com.springhelloworld.springhelloworld.services.EmailService;
+import com.springhelloworld.springhelloworld.services.MockEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,4 +31,8 @@ public class DevConfig {
         return true;
     }
 
+    @Bean
+    public EmailService emailService() {
+        return new MockEmailService();
+    }
 }

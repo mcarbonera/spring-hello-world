@@ -5,6 +5,7 @@ import com.springhelloworld.springhelloworld.domain.PagamentoComBoleto;
 import com.springhelloworld.springhelloworld.domain.Pedido;
 import com.springhelloworld.springhelloworld.enums.EstadoPagamento;
 import com.springhelloworld.springhelloworld.exceptions.ObjectNotFoundException;
+import com.springhelloworld.springhelloworld.repositories.ClienteRepository;
 import com.springhelloworld.springhelloworld.repositories.ItemPedidoRepository;
 import com.springhelloworld.springhelloworld.repositories.PagamentoRepository;
 import com.springhelloworld.springhelloworld.repositories.PedidoRepository;
@@ -32,6 +33,12 @@ public class PedidoService {
     @Autowired
     private ProdutoService produtoService;
 
+    @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
+    private EmailService emailService;
+
     public Pedido find(Integer id){
         Optional<Pedido> obj = pedidoRepository.findById(id);
         //return obj.orElse(null);
@@ -54,6 +61,8 @@ public class PedidoService {
         /* pedido */
         obj.setId(null);
         obj.setInstante(new Date());
+        /* cliente */
+        obj.setCliente(clienteService.find(obj.getCliente().getId()));
         /* pagamento*/
         obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
         obj.getPagamento().setPedido(obj);
@@ -63,14 +72,16 @@ public class PedidoService {
         }
         obj = pedidoRepository.save(obj);
         pagamentoRepository.save(obj.getPagamento());
-
         /* ItemPedido */
         for(ItemPedido ip : obj.getItens()) {
             ip.setDesconto(0.0);
-            ip.setPreco(produtoService.find(ip.getProduto().getId()).getPreco());
+            ip.setProduto(produtoService.find(ip.getProduto().getId()));
+            ip.setPreco(ip.getProduto().getPreco());
             ip.setPedido(obj);
         }
         itemPedidoRepository.saveAll(obj.getItens());
+
+        emailService.sendOrderConfirmationEmail(obj);
         return obj;
     }
 }

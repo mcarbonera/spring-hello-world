@@ -6,7 +6,8 @@ _______________________________________
 Esse Hello World tunado contém Spring Boot, Jpa, implementação de uma arquitetura Rest. 
 
 A parte de banco foi feito em h2 em uma parte da video aula por uma questão de facilidade de uso.
-Porém, na etapa de migrar para mysql eu fiz para oracle.
+Porém, na etapa de migrar para mysql eu fiz para oracle e, por isso, não foi possível seguir a
+parte de deploy no Heroku.
 
 Particularidades: 
     -> Foi necessário especificar o nome da tabela e schema. O h2 infere o nome da tabela pelo nome da classe java. Mas justamente pela possibilidade de migração, é uma boa prática especificar mesmo assim.
