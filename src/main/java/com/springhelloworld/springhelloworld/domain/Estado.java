@@ -9,11 +9,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "SPRING_ESTADO", schema = "APL_SBJ")
+@SequenceGenerator(name = "SEQ_SPRING_ESTADO", sequenceName = "SEQ_SPRING_ESTADO", allocationSize = 1)
 public class Estado implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "SEQ_SPRING_ESTADO")
     private Integer id;
     private String nome;
 

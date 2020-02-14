@@ -8,11 +8,13 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@Table(name = "SPRING_CLIENTE", schema = "APL_SBJ")
+@SequenceGenerator(name = "SEQ_SPRING_CLIENTE", sequenceName = "SEQ_SPRING_CLIENTE", allocationSize = 1)
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SEQ_SPRING_CLIENTE")
     private Integer id;
     private String nome;
 

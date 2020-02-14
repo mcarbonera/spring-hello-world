@@ -16,6 +16,8 @@ import java.util.Objects;
         {@JsonSubTypes.Type(value = PagamentoComBoleto.class , name = "pagamentoComBoleto"),
                 @JsonSubTypes.Type(value = PagamentoComCartao.class, name = "pagamentoComCartao")})
 //@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
+
+@Table(name = "SPRING_PAGAMENTO", schema = "APL_SBJ")
 public abstract class Pagamento implements Serializable {
     private static final long serialVersionUID = 1L;
 

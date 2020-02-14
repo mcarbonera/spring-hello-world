@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "SPRING_CATEGORIA", schema = "APL_SBJ")
+@SequenceGenerator(name = "SEQ_SPRING_CATEGORIA", sequenceName = "SEQ_SPRING_CATEGORIA", allocationSize = 1)
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "SEQ_SPRING_CATEGORIA")
     private Integer id;
     private String nome;
 

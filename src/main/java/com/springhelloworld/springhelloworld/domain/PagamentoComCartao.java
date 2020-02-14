@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.springhelloworld.springhelloworld.enums.EstadoPagamento;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @JsonTypeName("pagamentoComCartao")
+@Table(name = "SPRING_PAGAMENTO_COM_CARTAO", schema = "APL_SBJ")
 public class PagamentoComCartao extends Pagamento {
     private Integer numeroDeParcelas;
 

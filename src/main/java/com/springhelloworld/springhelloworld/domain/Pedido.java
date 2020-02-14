@@ -11,11 +11,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table(name = "SPRING_PEDIDO", schema = "APL_SBJ")
+@SequenceGenerator(name = "SEQ_SPRING_PEDIDO", sequenceName = "SEQ_SPRING_PEDIDO", allocationSize = 1)
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SEQ_SPRING_PEDIDO")
     private Integer id;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")

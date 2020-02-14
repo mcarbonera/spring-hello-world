@@ -7,11 +7,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name = "SPRING_ENDERECO", schema = "APL_SBJ")
+@SequenceGenerator(name = "SEQ_SPRING_ENDERECO", sequenceName = "SEQ_SPRING_ENDERECO", allocationSize = 1)
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SEQ_SPRING_ENDERECO")
     private Integer id;
     private String logradouro;
     private String numero;
