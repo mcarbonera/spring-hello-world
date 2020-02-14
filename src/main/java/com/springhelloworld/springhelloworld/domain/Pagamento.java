@@ -11,12 +11,12 @@ import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 @JsonSubTypes(
-        {@JsonSubTypes.Type(value = PagamentoComBoleto.class , name = "pagamentoComBoleto"),
-                @JsonSubTypes.Type(value = PagamentoComCartao.class, name = "pagamentoComCartao")})
-//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-
+{
+    @JsonSubTypes.Type(name="pagamentoComBoleto", value=PagamentoComBoleto.class),
+    @JsonSubTypes.Type(name="pagamentoComCartao", value=PagamentoComCartao.class)
+})
 @Table(name = "SPRING_PAGAMENTO", schema = "APL_SBJ")
 public abstract class Pagamento implements Serializable {
     private static final long serialVersionUID = 1L;

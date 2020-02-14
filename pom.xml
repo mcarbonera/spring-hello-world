@@ -69,15 +69,22 @@
 		<!-- Banco Oracle - ojdbc7.jar adicionado manualmente em lib -->
 		<!--
 		mvn install:install-file -Dfile=C:\Users\Luiz\IdeaProjects\spring-hello-world\src\main\resources\lib\ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2 -Dpackaging=jar
-
-		mvn install:install-file -Dfile=C:\Users\Luiz\IdeaProjects\spring-hello-world\src\main\resources\lib\ojdbc8.jar -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0 -Dpackaging=jar
 		-->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2</version>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+
+		<!--
+		mvn install:install-file -Dfile=C:\Users\Luiz\IdeaProjects\spring-hello-world\src\main\resources\lib\ojdbc8.jar -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0 -Dpackaging=jar
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>12.2.0</version>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
+			<scope>runtime</scope>
+		</dependency> -->
 
 
 		<!-- h2 - banco de dados em memória (para prototipagem)

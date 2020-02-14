@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@JsonTypeName("pagamentoComCartao")
+//@JsonTypeName("pagamentoComCartao")
 @Table(name = "SPRING_PAGAMENTO_COM_CARTAO", schema = "APL_SBJ")
 public class PagamentoComCartao extends Pagamento {
     private Integer numeroDeParcelas;

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@JsonTypeName("pagamentoComBoleto")
+//@JsonTypeName("pagamentoComBoleto")
 @Table(name = "SPRING_PAGAMENTO_COM_BOLETO", schema = "APL_SBJ")
 public class PagamentoComBoleto extends Pagamento {
     @JsonFormat(pattern = "dd/MM/yyyy")
