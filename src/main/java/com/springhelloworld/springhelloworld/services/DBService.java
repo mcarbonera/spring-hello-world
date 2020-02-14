@@ -32,7 +32,7 @@ public class DBService {
     @Autowired
     ItemPedidoRepository itemPedidoRepository;
 
-    public void instantiateTestDataBase() throws ParseException {
+    public void instantiateTestDatabase() throws ParseException {
         /* RELACIONAMENTO CATEGORIA PRODUTO */
         Categoria cat1 = new Categoria(null, "Categoria---1");
         Categoria cat2 = new Categoria(null, "Categoria---2");

@@ -28,7 +28,7 @@ public class Cliente implements Serializable {
     private List<Endereco> enderecos = new ArrayList<>();
 
     @ElementCollection
-    @CollectionTable(name = "TELEFONE")
+    @CollectionTable(name = "SPRING_TELEFONE", schema = "APL_SBJ")
     private Set<String> telefones = new HashSet<>();
 
     @JsonIgnore

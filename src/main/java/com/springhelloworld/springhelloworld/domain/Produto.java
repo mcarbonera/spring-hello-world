@@ -21,7 +21,8 @@ public class Produto implements Serializable {
     //@Transient
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA",
+    @JoinTable(name = "SPRING_PRODUTO_CATEGORIA",
+            schema = "APL_SBJ",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
