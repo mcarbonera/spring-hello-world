@@ -5,7 +5,6 @@ import com.springhelloworld.springhelloworld.domain.PagamentoComBoleto;
 import com.springhelloworld.springhelloworld.domain.Pedido;
 import com.springhelloworld.springhelloworld.enums.EstadoPagamento;
 import com.springhelloworld.springhelloworld.exceptions.ObjectNotFoundException;
-import com.springhelloworld.springhelloworld.repositories.ClienteRepository;
 import com.springhelloworld.springhelloworld.repositories.ItemPedidoRepository;
 import com.springhelloworld.springhelloworld.repositories.PagamentoRepository;
 import com.springhelloworld.springhelloworld.repositories.PedidoRepository;

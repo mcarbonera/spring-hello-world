@@ -93,7 +93,7 @@ public class DBService {
         cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 
         /* RELACIONAMENTO CLIENTE ENDERECO */
-        Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "1234567890986", TipoCliente.PESSOAFISICA);
+        Cliente cli1 = new Cliente(null, "Maria Silva", "marcelocarbonera@live.com", "1234567890986", TipoCliente.PESSOAFISICA);
         cli1.getTelefones().addAll(Arrays.asList("1234564321","123455432"));
 
         Endereco e1 = new Endereco(null,"Rua Flores", "300", "Apto 303", "Jardim", "345676434", cli1, c1);

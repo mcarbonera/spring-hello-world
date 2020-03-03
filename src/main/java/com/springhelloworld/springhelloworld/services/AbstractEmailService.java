@@ -6,7 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 
 import java.util.Date;
 
-public class AbstractEmailService implements EmailService {
+public abstract class AbstractEmailService implements EmailService {
     @Value("${default.sender}")
     private String sender;
 
@@ -14,10 +14,6 @@ public class AbstractEmailService implements EmailService {
     public void sendOrderConfirmationEmail(Pedido obj) {
         SimpleMailMessage sm = prepareSimpleMailMessageFromPedido(obj);
         sendEmail(sm);
-    }
-
-    @Override
-    public void sendEmail(SimpleMailMessage msg) {
     }
 
     protected SimpleMailMessage prepareSimpleMailMessageFromPedido(Pedido obj) {
